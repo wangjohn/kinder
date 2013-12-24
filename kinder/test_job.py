@@ -6,4 +6,4 @@ class TestJob(unittest.TestCase):
         self.params = self.validate_params(params)
 
     def validate_params(self, params):
-        pass
+        return params

@@ -31,12 +31,12 @@ class MainGenerator:
 
     def _enforce_invariants(self, test_jobs, param_generators):
         if len(param_generators) != len(test_jobs.prob_hash):
-            raise "test_jobs and param_generators inputs must match"
+            raise AssertionError("test_jobs and param_generators inputs must match")
         for key in test_jobs.prob_hash.iterkeys():
-            if not isinstance(key, test_job.TestJob):
-                raise "Must subclass TestJob class for all tests"
+            if not issubclass(key, test_job.TestJob):
+                raise AssertionError("Must subclass TestJob class for all tests")
             if key not in param_generators:
-                raise "test_jobs and param_generators inputs must match"
+                raise AssertionError("test_jobs and param_generators inputs must match")
 
 class QueueRunner(multiprocessing.Process):
     def __init__(self, queue, unit_test_runner):
@@ -70,7 +70,7 @@ class MarkovProcess:
         elif isinstance(prob_hash, list):
             return {key: 1.0 / len(prob_hash) for item in prob_hash}
         else:
-            raise "Inputs to a MarkovProcess must be either an array or a dictionary"
+            raise AssertionError("Inputs to a MarkovProcess must be either an array or a dictionary")
 
     def generate(self):
         rand = random.random()
