@@ -26,7 +26,7 @@ class MainGenerator:
 
     def step(self):
         test = self.test_jobs.generate()
-        params = self.param_generators[test].generate()
+        params = self.param_generators[test].generate().generate_params()
         return (test, params)
 
     def _enforce_invariants(self, test_jobs, param_generators):

@@ -1,6 +1,6 @@
 class ParamGenerator:
-    def __init__(self, options):
+    def __init__(self, options = None):
         self.options = options
 
-    def generate(self):
-        raise "You must implement generate on every ParamGenerator."
+    def generate_params(self):
+        pass
