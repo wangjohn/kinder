@@ -1,12 +1,11 @@
-import main_generator
-import test_job
-import param_generator
+import kinder
+print dir(kinder)
 
-class ExampleJob(test_job.TestJob):
+class ExampleJob(kinder.TestJob):
     def test_me(self):
         print 'testing %s' % self.params
 
-class ExampleGenerator(param_generator.ParamGenerator):
+class ExampleGenerator(kinder.ParamGenerator):
     def generate_params(self):
         return "generating params"
 
@@ -21,5 +20,4 @@ if __name__ == '__main__':
                 }
             }
 
-    runner = main_generator.UnitTestRunner()
-    main_generator.MainGenerator(test_jobs, param_generators).run()
+    kinder.MainGenerator(test_jobs, param_generators).run()
